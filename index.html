@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GITHUB:@archbold09</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+</head>
+<body>
+    <!--Referencia del componente VUE-->
+    <div id="app" class="container">
+        <div class="">
+            <div class="col-sm-4" >
+                <h5>Lista de usuarios VUE + AJAX</h5>
+                <ul class="list-group"> 
+                    <!--Recorremos nuestro array con un FOR-->
+                    <li v-for="item in lista" class="list-group-item">
+                        <!--listamos los datos json que traemos-->
+                        {{item.name.first}} - {{item.name.last}}
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div class="col-sm-8" >
+                    <h4>JSON</h4>
+                    <!--Esta etiqueta sirve para mostrar los datos JSON DE FORMA ORDENADA-->
+                    <pre>
+                        <!---->
+                        {{$data}}
+                    </pre>
+                </div>    
+        </div>
+        <!--Todo lo que este aqui se hara con Vue Si esta por fuera, no funcionara.-->
+    </div>
+
+
+
+<!--CDN DE VUE-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>    
+<!--CDN DEL RECURSO UTILIZADO PARA USAR AJAX-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+<!--Componente VUE-->
+<script>
+var url="https://randomuser.me/api/?results=10"
+
+new Vue({
+    el:'#app',
+    created:function(){
+        this.getUsuarios();
+    },
+    data(){
+        return{
+            lista:[]
+        } 
+    },
+    methods:{
+        getUsuarios:function(){
+                // "$http"  Esto lo podemos hacer gracias a que importamos el recurso AJAX que esta arriba 
+            this.$http.get(url).then(function(response){
+                            //.Data ignora el estatus de la respuesta
+                this.lista = response.data.results
+            });                      //.<nombre del array> ingresa de lleno a los datos necesarios para listar
+        }
+    }
+});
+</script>
+</body>
+</html>

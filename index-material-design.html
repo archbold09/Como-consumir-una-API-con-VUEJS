@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="https://github.githubassets.com/apple-touch-icon-114x114.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>@Archbold09</title>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-container>
+                <v-layout>
+                    <h4>Lista de usuarios VUE + AJAX </h4>
+                </v-layout>
+                <hr>
+            </v-container>
+            <v-layout wrap>
+                
+                <v-flex xs12 sm6 offset-sm3>
+                    <h3>Nombres</h3>
+                    <div class="text-xs-center">
+                    <v-progress-circular
+                        indeterminate
+                        color="success"
+                    ></v-progress-circular>
+                    </div>
+                    <v-list-tile v-for="item in lista" :key="item.id" >
+                       <p> {{item.name.first}} - {{item.name.last}}</p>
+                    </v-list-tile>
+
+                </v-flex>
+            </v-layout>
+
+            <hr>
+            <div class="col-sm-8" >
+                    <h4>JSON</h4>
+                    <pre>
+                        {{$data}}
+                    </pre>
+                </div>    
+        </v-app>
+        
+
+
+    </div>
+   
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
